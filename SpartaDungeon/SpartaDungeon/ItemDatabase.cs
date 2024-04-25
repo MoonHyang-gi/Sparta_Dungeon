@@ -13,7 +13,7 @@ namespace SpartaDungeon
         public ItemDatabase()
         {
             BaseItem Armor1 = new BaseItem ();
-            Armor1.index = 0;
+            Armor1.index = 1;
             Armor1.itemName = "수련자 갑옷";
             Armor1.type = 1;
             Armor1.dPower = 5;
@@ -21,7 +21,7 @@ namespace SpartaDungeon
             Armor1.price = 1000;
 
             BaseItem Armor2 = new BaseItem();
-            Armor2.index = 1;
+            Armor2.index = 2;
             Armor2.itemName = "무쇠 갑옷";
             Armor2.type = 1;
             Armor2.dPower = 9;
@@ -29,7 +29,7 @@ namespace SpartaDungeon
             Armor2.price = 1000;
 
             BaseItem Armor3 = new BaseItem();
-            Armor3.index = 2;
+            Armor3.index = 3;
             Armor3.itemName = "스파르타의 갑옷";
             Armor3.type = 1;
             Armor3.dPower = 15;
@@ -37,7 +37,7 @@ namespace SpartaDungeon
             Armor3.price = 3500;
 
             BaseItem weapon1 = new BaseItem();
-            weapon1.index = 3;
+            weapon1.index = 4;
             weapon1.itemName = "낡은 검";
             weapon1.type = 2;
             weapon1.power = 2;
@@ -45,7 +45,7 @@ namespace SpartaDungeon
             weapon1.price = 600;
 
             BaseItem weapon2 = new BaseItem();
-            weapon2.index = 4;
+            weapon2.index = 5;
             weapon2.itemName = "청동 도끼";
             weapon2.type = 2;
             weapon2.power = 5;
@@ -53,7 +53,7 @@ namespace SpartaDungeon
             weapon2.price = 1500;
 
             BaseItem weapon3 = new BaseItem();
-            weapon3.index = 4;
+            weapon3.index = 6;
             weapon3.itemName = "스파르타의 창";
             weapon3.type = 2;
             weapon3.power = 7;
@@ -68,7 +68,7 @@ namespace SpartaDungeon
             itemDB.Add(weapon3.itemName, weapon3 );
         }
 
-        public BaseItem GetItem(string name)
+        /*public BaseItem GetItem(string name)
         {
             if (itemDB.ContainsKey(name))
             {
@@ -78,6 +78,17 @@ namespace SpartaDungeon
             {
                 return null;
             }
+        }*/
+        public BaseItem GetItemByIndex(int index)
+        {
+            foreach (var item in itemDB)
+            {
+                if (item.Value.index == index)
+                {
+                    return item.Value;
+                }
+            }
+            return null;
         }
     }
 
@@ -91,4 +102,5 @@ namespace SpartaDungeon
         public int power;
         public int price;
     }
+
 }

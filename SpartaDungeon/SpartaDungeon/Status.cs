@@ -15,6 +15,7 @@ namespace SpartaDungeon
         public int Health = 100;
         public int Gold = 1500;
         public int Level = 01;
+        public List<int> Inventory;
 
         //생성자
         public Character(string name, string job, int attack, 
@@ -27,6 +28,7 @@ namespace SpartaDungeon
             Health = health;
             Gold = gold;
             Level = 1;
+            Inventory = new List<int>();
         }
     }
 }

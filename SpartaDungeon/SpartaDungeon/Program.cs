@@ -9,6 +9,10 @@ namespace SpartaDungoen
 {
     class Start
     {
+        //전역 변수로 지정
+        static Character player = new Character("Chad", "전사", 10, 5, 100, 1500);
+        static ItemDatabase itemDatabase = new ItemDatabase();
+
         static void Main()
         {
             Console.WriteLine("스파르타 마을에 오신 여러분 환영합니다.");
@@ -40,8 +44,6 @@ namespace SpartaDungoen
 
         static void Status()
         {
-            Character player = new Character("Chad", "전사", 10, 5, 100, 1500);
-
             Console.WriteLine("상태 보기");
             Console.WriteLine("캐릭터의 정보가 표시됩니다.\n");
             Console.WriteLine("Lv. {0}", player.Level);
@@ -53,9 +55,9 @@ namespace SpartaDungoen
             
             Console.WriteLine("\n0. 나가기\n");
             Console.Write("\n원하시는 행동을 입력해주세요.\n>> ");
-            string back = Console.ReadLine();
+            string input = Console.ReadLine();
 
-            switch (back)
+            switch (input)
             {
                 case "0":
                     Console.Clear();
@@ -75,14 +77,14 @@ namespace SpartaDungoen
             Console.WriteLine("보유 중인 아이템을 관리할 수 있습니다.");
             Console.WriteLine("\n[아이템 목록]");
             //보유중인 아이템 목록 추가
-            //장착 중인 아이템은 앞에 [E] 표시
+            //장착 중인 아이템은 앞에 [E] 표시 추가
 
             Console.WriteLine("\n1. 장착 관리");
             Console.WriteLine("\n0. 나가기\n");
             Console.Write("\n원하시는 행동을 입력해주세요.\n>> ");
-            string back = Console.ReadLine();
+            string input = Console.ReadLine();
 
-            switch (back)
+            switch (input)
             {
                 case "0":
                     Console.Clear();
@@ -108,9 +110,9 @@ namespace SpartaDungoen
 
             Console.WriteLine("\n0. 나가기\n");
             Console.Write("\n원하시는 행동을 입력해주세요.\n>> ");
-            string back = Console.ReadLine();
+            string input = Console.ReadLine();
 
-            if (back == "0")
+            if (input == "0")
             {
                 Console.Clear();
                 Inventory();
@@ -123,58 +125,86 @@ namespace SpartaDungoen
 
         static void Shop()
         {
-            ItemDatabase itemDatabase = new ItemDatabase();
-
             Console.WriteLine("상점");
             Console.WriteLine("필요한 아이템을 얻을 수 있는 상점입니다.");
             Console.WriteLine("\n[보유 골드]");
-            Console.WriteLine("{0} G"); //골드 변수 추가
+            Console.WriteLine("{0} G", player.Gold); //골드 변수 추가
             Console.WriteLine("\n[아이템 목록]");
-            //아이템 목록 추가
+
             foreach (var item in itemDatabase.itemDB)
             {
-                BaseItem holdItem = item.Value;
+                BaseItem Item = item.Value;
                 string equipped = ""; //장착 여부 표시를 위한 문자열
 
-                //구매된 아이템인 경우 표시 추가
-                if (IsEquipped(holdItem))
+                //구매된 아이템인 경우
+                if (IsHave(Item))
                 {
                     equipped = "|  구매완료";
                 }
 
                 //아이템 정보 출력
                 Console.WriteLine("- {0} | {1} | {2} | {3} G {4}",
-                    holdItem.itemName,
-                    holdItem.type == 1 ? "방어력 +" + holdItem.dPower : "공격력 +" + holdItem.power,
-                    holdItem.data,
-                    holdItem.price,
+                    Item.itemName,
+                    Item.type == 1 ? "방어력 +" + Item.dPower : "공격력 +" + Item.power,
+                    Item.data,
+                    Item.price,
                     equipped);
             }
 
             Console.WriteLine("\n1. 아이템 구매\n");
             Console.WriteLine("0. 나가기\n");
             Console.Write("\n원하시는 행동을 입력해주세요.\n>> ");
-            string back = Console.ReadLine();
+            string input = Console.ReadLine();
 
-            //아이템 구매 창 추가
-            if (back == "0")
+            if (input == "0")
             {
                 Console.Clear();
                 Main();
             }
-
-
-
-        }
-        static bool IsEquipped(BaseItem item)
-        {
-            if (item.itemName == "스파르타의 갑옷")
+            else if (input == "1") 
             {
-                return true;
+                BuyItem();
+            }
+        }
+
+        static bool IsHave(BaseItem item)
+        {
+            return player.Inventory.Contains(item.index);
+        }
+
+        static void BuyItem()
+        {
+            Console.Write("\n구매할 아이템의 숫자를 입력해주세요.\n>>");
+            int index = int.Parse(Console.ReadLine());
+
+            //아이템이 존재하는지
+            BaseItem itemToBuy = itemDatabase.GetItemByIndex(index);
+            if (itemToBuy != null)
+            {
+                //이미 구매한 아이템인지
+                if (IsHave(itemToBuy))
+                {
+                    Console.WriteLine("이미 구매한 아이템입니다.");
+                }
+                else
+                {
+                    //보유 금액이 충분한지
+                    if (player.Gold >= itemToBuy.price)
+                    {
+                        //아이템 구매, 인벤토리 추가
+                        player.Gold -= itemToBuy.price;
+                        player.Inventory.Add(itemToBuy.index);
+                        Console.WriteLine("구매를 완료했습니다.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("보유한 골드가 부족합니다.");
+                    }
+                }
             }
             else
             {
-                return false;
+                Console.WriteLine("잘못된 입력입니다.");
             }
         }
     }
