@@ -1,0 +1,14 @@
+D:\CodingCamp\2nd_Practice\SpartaDungeon\SpartaDungeon\bin\Debug\net8.0\SpartaDungeon.exe
+D:\CodingCamp\2nd_Practice\SpartaDungeon\SpartaDungeon\bin\Debug\net8.0\SpartaDungeon.deps.json
+D:\CodingCamp\2nd_Practice\SpartaDungeon\SpartaDungeon\bin\Debug\net8.0\SpartaDungeon.runtimeconfig.json
+D:\CodingCamp\2nd_Practice\SpartaDungeon\SpartaDungeon\bin\Debug\net8.0\SpartaDungeon.dll
+D:\CodingCamp\2nd_Practice\SpartaDungeon\SpartaDungeon\bin\Debug\net8.0\SpartaDungeon.pdb
+D:\CodingCamp\2nd_Practice\SpartaDungeon\SpartaDungeon\obj\Debug\net8.0\SpartaDungeon.GeneratedMSBuildEditorConfig.editorconfig
+D:\CodingCamp\2nd_Practice\SpartaDungeon\SpartaDungeon\obj\Debug\net8.0\SpartaDungeon.AssemblyInfoInputs.cache
+D:\CodingCamp\2nd_Practice\SpartaDungeon\SpartaDungeon\obj\Debug\net8.0\SpartaDungeon.AssemblyInfo.cs
+D:\CodingCamp\2nd_Practice\SpartaDungeon\SpartaDungeon\obj\Debug\net8.0\SpartaDungeon.csproj.CoreCompileInputs.cache
+D:\CodingCamp\2nd_Practice\SpartaDungeon\SpartaDungeon\obj\Debug\net8.0\SpartaDungeon.dll
+D:\CodingCamp\2nd_Practice\SpartaDungeon\SpartaDungeon\obj\Debug\net8.0\refint\SpartaDungeon.dll
+D:\CodingCamp\2nd_Practice\SpartaDungeon\SpartaDungeon\obj\Debug\net8.0\SpartaDungeon.pdb
+D:\CodingCamp\2nd_Practice\SpartaDungeon\SpartaDungeon\obj\Debug\net8.0\SpartaDungeon.genruntimeconfig.cache
+D:\CodingCamp\2nd_Practice\SpartaDungeon\SpartaDungeon\obj\Debug\net8.0\ref\SpartaDungeon.dll
