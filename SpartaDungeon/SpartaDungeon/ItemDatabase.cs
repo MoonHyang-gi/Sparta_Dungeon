@@ -79,7 +79,7 @@ namespace SpartaDungeon
                 return null;
             }
         }*/
-        public BaseItem GetItemByIndex(int index)
+        public BaseItem GetItem(int index)
         {
             foreach (var item in itemDB)
             {

@@ -128,7 +128,7 @@ namespace SpartaDungoen
             Console.WriteLine("상점");
             Console.WriteLine("필요한 아이템을 얻을 수 있는 상점입니다.");
             Console.WriteLine("\n[보유 골드]");
-            Console.WriteLine("{0} G", player.Gold); //골드 변수 추가
+            Console.WriteLine("{0} G", player.Gold);
             Console.WriteLine("\n[아이템 목록]");
 
             foreach (var item in itemDatabase.itemDB)
@@ -178,7 +178,7 @@ namespace SpartaDungoen
             int index = int.Parse(Console.ReadLine());
 
             //아이템이 존재하는지
-            BaseItem itemToBuy = itemDatabase.GetItemByIndex(index);
+            BaseItem itemToBuy = itemDatabase.GetItem(index);
             if (itemToBuy != null)
             {
                 //이미 구매한 아이템인지

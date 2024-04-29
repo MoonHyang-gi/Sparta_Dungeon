@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SpartaDungeon
 {
-    internal class Character
+    class Character
     {
         public string Name = "Chad";
         public string Job = "전사";
